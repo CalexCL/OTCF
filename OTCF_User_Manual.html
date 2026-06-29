@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OTCF User Manual</title>
+<style>
+  :root{
+    --pink:#f7b8cc;
+    --blue:#bcd6f0;
+    --red:#f8c6c6;
+    --red-strong:#f5a3a3;
+    --yellow:#fdf3b0;
+    --text:#1a1a1a;
+  }
+  *{box-sizing:border-box;}
+  body{
+    font-family: Arial, Helvetica, sans-serif;
+    color:var(--text);
+    background:#fafafa;
+    margin:0;
+    padding:20px;
+  }
+  .sheet{
+    max-width:860px;
+    margin:0 auto;
+    background:#fff;
+    padding:30px 36px;
+    border:1px solid #ddd;
+  }
+  .version{
+    text-align:right;
+    font-size:12px;
+    color:#999;
+    margin-bottom:6px;
+  }
+  h1{
+    font-size:24px;
+    margin:0 0 4px 0;
+    padding-bottom:10px;
+    border-bottom:3px solid var(--pink);
+  }
+  h2{
+    font-size:18px;
+    margin:26px 0 8px 0;
+    color:#1a1a1a;
+  }
+  p{
+    font-size:15px;
+    line-height:1.55;
+    margin:8px 0;
+  }
+  ul, ol{
+    font-size:15px;
+    line-height:1.55;
+    margin:6px 0 14px 0;
+    padding-left:22px;
+  }
+  li{ margin-bottom:6px; }
+  .note{
+    font-size:13px;
+    color:#555;
+  }
+  .lang-toggle{
+    display:flex;
+    gap:10px;
+    justify-content:center;
+    margin-bottom:24px;
+    flex-wrap:wrap;
+  }
+  .lang-toggle a{
+    text-decoration:none;
+    background:var(--blue);
+    color:#1a1a1a;
+    font-weight:bold;
+    padding:8px 18px;
+    border-radius:6px;
+    font-size:14px;
+  }
+  hr.section-divider{
+    border:none;
+    border-top:3px dashed var(--pink);
+    margin:50px 0 30px 0;
+  }
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin:14px 0 20px 0;
+    font-size:14px;
+  }
+  th, td{
+    border:1px solid #999;
+    padding:8px 10px;
+    text-align:left;
+    vertical-align:top;
+  }
+  th{
+    background:var(--pink);
+    font-weight:bold;
+  }
+  .legend-box{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    margin:10px 0 20px 0;
+  }
+  .legend-item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:14px;
+  }
+  .swatch{
+    width:18px;height:18px;border:1px solid #999;flex-shrink:0;
+  }
+  a{ color:#1a4d8f; }
+  @media print{
+    body{background:#fff;padding:0;}
+    .sheet{border:none;}
+    .lang-toggle{display:none;}
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="version">OTCF v.2026.06.29-18:00</div>
+  <h1>Overtime Claim Form (OTCF) — User Manual</h1>
+  <p class="note">This manual is provided in English and Simplified Chinese (中文), in separate sections below.</p>
+
+  <div class="lang-toggle">
+    <a href="#en">English</a>
+    <a href="#zh">简体中文</a>
+  </div>
+
+  <!-- ===================== ENGLISH ===================== -->
+  <div id="en">
+
+  <h2>1. Overview</h2>
+  <p>The Overtime Claim Form (OTCF) is a digital version of the paper OTCF used to record an employee's overtime work and request approval and payment for OT hours. It opens directly in a web browser — no installation or login is required.</p>
+
+  <h2>2. Getting Started</h2>
+  <p>Open the OTCF HTML file in any modern browser (Chrome, Edge, or Safari). The form works fully offline, except for the Print/Save PDF and Share to WhatsApp features, which need an internet connection the first time the page loads (to fetch the PDF tools).</p>
+
+  <h2>3. Filling in Employee Details</h2>
+  <ul>
+    <li><b>Name</b> — select from the dropdown. If your name isn't listed, choose "+ Add new...", type it in, and it will be saved for future use.</li>
+    <li><b>Designation</b> — same as Name.</li>
+    <li><b>Department</b> — same as Name (defaults to "HQ").</li>
+    <li><b>Submission Date</b> — defaults to today; click to change.</li>
+    <li><b>Month / Year</b> — default to the current month and year; can be changed. Changing either regenerates the daily table below.</li>
+    <li><b>No. of days in mth</b> — calculated automatically based on Month/Year; cannot be edited directly.</li>
+  </ul>
+
+  <h2>4. Working Hours</h2>
+  <p><b>Working Hour From / To</b> (default 9:00 AM – 6:00 PM) — enter your normal working hours here. The form uses this range to check that your OT claims do not overlap your normal working hours.</p>
+
+  <h2>5. Filling the Daily Table</h2>
+  <ul>
+    <li><b>Date / Day</b> — generated automatically from the Month and Year above; no manual entry needed.</li>
+    <li><b>PH (Public Holiday)</b> — tick this box if the date is a public holiday. The whole row turns light red, and Claim Type is automatically set to "Public Holiday".</li>
+    <li><b>Claim Type</b> — choose Normal, Rest Day, or Public Holiday for each day you are claiming OT.</li>
+    <li><b>OT Hrs From / To</b> — enter the start and end time of the overtime worked.</li>
+    <li><b>Total Hrs</b> — calculated automatically from From/To, but can be edited manually if needed.</li>
+    <li><b>Remarks</b> — optional free text for additional notes (e.g. reason for OT, project name).</li>
+  </ul>
+
+  <h2>6. Color Indicators</h2>
+  <div class="legend-box">
+    <div class="legend-item"><span class="swatch" style="background:var(--blue);"></span>Light blue row — weekend (Saturday/Sunday).</div>
+    <div class="legend-item"><span class="swatch" style="background:var(--red);"></span>Light red row — Public Holiday (PH ticked).</div>
+    <div class="legend-item"><span class="swatch" style="background:var(--red-strong);"></span>Dark red cell (OT From/To/Total Hrs) — the claimed OT time overlaps your normal Working Hours; flagged as an error to fix before submission.</div>
+  </div>
+
+  <h2>7. Adding New Dropdown Entries</h2>
+  <ol>
+    <li>Open the Name, Designation, or Department dropdown.</li>
+    <li>Select "+ Add new...".</li>
+    <li>Type the new value into the pop-up box and confirm.</li>
+  </ol>
+  <p>The new value is saved in your browser's local storage and will appear in the dropdown next time you open the form on the same device and browser.</p>
+  <p class="note">Note: Added entries are stored locally on your device only — they will not appear if you open the form on a different device or browser.</p>
+
+  <h2>8. Printing / Saving as PDF</h2>
+  <p>Click "Print / Save PDF" at the top of the form. In the print dialog that opens, choose a printer, or select "Save as PDF" as the destination. The layout is formatted to fit a single A4 page.</p>
+
+  <h2>9. Sharing to WhatsApp</h2>
+  <p>Click "Share to WhatsApp". On a mobile browser, this generates a PDF copy of the filled form and opens your phone's native share menu — select WhatsApp to send it directly. If your browser does not support direct sharing, the PDF is downloaded instead; you can then attach it manually in WhatsApp.</p>
+
+  <h2>10. Submission Reminders</h2>
+  <ul>
+    <li>OT Claim forms should be submitted on the last day of each month to HR.</li>
+    <li>For late submission, payment will be made the following month.</li>
+  </ul>
+
+  <h2>11. Troubleshooting</h2>
+  <ul>
+    <li>Dropdown not saving new entries — make sure your browser allows local storage (Incognito/Private mode clears storage when the window closes).</li>
+    <li>Table not updating after changing Month/Year — click outside the field to confirm the change.</li>
+    <li>Total Hrs not calculating — make sure both the From and To times are filled in.</li>
+  </ul>
+
+  <h2>12. Version History</h2>
+  <table>
+    <tr><th>Version</th><th>Date</th><th>Changes</th></tr>
+    <tr><td>v.2026.06.25</td><td>25 Jun 2026</td><td>Initial digital OTCF: addable Name/Designation/Department dropdowns, auto-generated date/day table, PH checkbox with row highlight, Claim Type dropdown, Working Hours overlap validation.</td></tr>
+    <tr><td>v.2026.06.25-18:00</td><td>25 Jun 2026, 18:00</td><td>Renamed app and updated version stamp per UVN convention.</td></tr>
+    <tr><td>v.2026.06.29-18:00</td><td>29 Jun 2026, 18:00</td><td>Removed seeded Name/Designation defaults; compacted print layout to fit one A4 page with maximised margins; added Print/Save PDF and Share to WhatsApp buttons; added Remarks column; resized Date/Day/PH/Claim Type columns and enlarged Remarks; fixed "Add new" dropdown bug; widened Claim Type and adjusted OT Hrs column widths; added this user manual page, linked from the form.</td></tr>
+  </table>
+
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ===================== SIMPLIFIED CHINESE ===================== -->
+  <div id="zh">
+
+  <h1 style="font-size:22px;border-bottom:3px solid var(--pink);padding-bottom:10px;">加班申请表 (OTCF) — 用户手册</h1>
+  <p class="note">版本: OTCF v.2026.06.29-18:00</p>
+
+  <h2>1. 概述</h2>
+  <p>加班申请表(OTCF)是纸质版OTCF的数字化版本,用于记录员工的加班工作,并申请加班费的批准与发放。表格可直接在网页浏览器中打开使用,无需安装或登录。</p>
+
+  <h2>2. 开始使用</h2>
+  <p>请使用任何现代浏览器(Chrome、Edge 或 Safari)打开 OTCF 的 HTML 文件。表格可完全离线使用,唯独"打印/保存PDF"与"分享至WhatsApp"功能在首次加载页面时需要网络连接(用于加载PDF生成工具)。</p>
+
+  <h2>3. 填写员工资料</h2>
+  <ul>
+    <li><b>姓名</b> — 从下拉列表中选择。如果列表中没有您的姓名,请选择"+ 添加新项...",输入后系统会保存供下次使用。</li>
+    <li><b>职位</b> — 操作方式与姓名相同。</li>
+    <li><b>部门</b> — 操作方式与姓名相同(默认为"HQ")。</li>
+    <li><b>提交日期</b> — 默认为当天,可点击更改。</li>
+    <li><b>月份 / 年份</b> — 默认为当前月份与年份,可自行更改。更改后,下方的每日表格会自动重新生成。</li>
+    <li><b>当月天数</b> — 根据月份/年份自动计算,无法手动编辑。</li>
+  </ul>
+
+  <h2>4. 工作时间</h2>
+  <p><b>工作时间(从 / 到)</b>(默认为上午9:00至下午6:00)— 请在此填写您的正常上班时间。系统将以此核对您申请的加班时间是否与正常上班时间重叠。</p>
+
+  <h2>5. 填写每日表格</h2>
+  <ul>
+    <li><b>日期 / 星期</b> — 根据上方的月份与年份自动生成,无需手动输入。</li>
+    <li><b>公假(PH)</b> — 如该日为公共假期,请勾选此项。该行将整行显示为浅红色,且"申请类型"会自动设为"Public Holiday"。</li>
+    <li><b>申请类型</b> — 为每个申请加班的日期选择 Normal(平日)、Rest Day(休息日)或 Public Holiday(公假)。</li>
+    <li><b>加班时间(从 / 到)</b> — 填写加班的开始与结束时间。</li>
+    <li><b>总时数</b> — 根据"从/到"时间自动计算,如有需要可手动修改。</li>
+    <li><b>备注</b> — 选填,用于补充说明(如加班原因、项目名称等)。</li>
+  </ul>
+
+  <h2>6. 颜色说明</h2>
+  <div class="legend-box">
+    <div class="legend-item"><span class="swatch" style="background:var(--blue);"></span>浅蓝色行 — 周末(星期六/星期日)。</div>
+    <div class="legend-item"><span class="swatch" style="background:var(--red);"></span>浅红色行 — 公共假期(已勾选PH)。</div>
+    <div class="legend-item"><span class="swatch" style="background:var(--red-strong);"></span>深红色格(加班从 / 到 / 总时数) — 申请的加班时间与正常工作时间重叠,系统会标记为错误,请于提交前更正。</div>
+  </div>
+
+  <h2>7. 新增下拉选项</h2>
+  <ol>
+    <li>打开姓名、职位或部门的下拉列表。</li>
+    <li>选择"+ 添加新项..."。</li>
+    <li>在弹出框中输入新内容并确认。</li>
+  </ol>
+  <p>新内容将保存在您浏览器的本地存储中,下次在同一设备及浏览器打开表格时会显示在下拉列表中。</p>
+  <p class="note">注意:新增内容仅保存于本机,若在其他设备或浏览器打开表格,将不会显示。</p>
+
+  <h2>8. 打印 / 保存为PDF</h2>
+  <p>点击表格顶部的"Print / Save PDF"按钮。在弹出的打印对话框中选择打印机,或选择"另存为PDF"作为输出方式。表格版面已调整为可容纳于一张A4纸内。</p>
+
+  <h2>9. 分享至WhatsApp</h2>
+  <p>点击"Share to WhatsApp"按钮。在手机浏览器中,系统会生成已填写表格的PDF文件,并打开手机的原生分享菜单,选择WhatsApp即可直接发送。若浏览器不支持直接分享,系统将自动下载PDF文件,您可手动在WhatsApp中添加附件发送。</p>
+
+  <h2>10. 提交须知</h2>
+  <ul>
+    <li>加班申请表应于每月最后一天提交给人力资源部(HR)。</li>
+    <li>逾期提交的表格,加班费将于次月发放。</li>
+  </ul>
+
+  <h2>11. 常见问题</h2>
+  <ul>
+    <li>下拉列表无法保存新增内容 — 请确认浏览器允许本地存储功能(无痕/隐私模式下,关闭窗口后数据会被清除)。</li>
+    <li>更改月份/年份后表格未更新 — 请点击该字段外的区域以确认更改。</li>
+    <li>总时数未自动计算 — 请确认"从"与"到"时间均已填写。</li>
+  </ul>
+
+  <h2>12. 版本记录</h2>
+  <table>
+    <tr><th>版本</th><th>日期</th><th>修改内容</th></tr>
+    <tr><td>v.2026.06.25</td><td>2026年6月25日</td><td>初版数字化OTCF:可新增的姓名/职位/部门下拉列表、自动生成日期与星期表格、公假勾选并整行高亮、申请类型下拉选项、工作时间重叠验证功能。</td></tr>
+    <tr><td>v.2026.06.25-18:00</td><td>2026年6月25日 18:00</td><td>依据UVN版本规范重新命名应用程序并更新版本标记。</td></tr>
+    <tr><td>v.2026.06.29-18:00</td><td>2026年6月29日 18:00</td><td>移除预设的姓名/职位默认值;压缩打印版面以容纳于一张A4纸并最大化页边空间;新增"打印/保存PDF"与"分享至WhatsApp"按钮;新增备注栏;调整日期/星期/公假/申请类型栏宽并扩大备注栏;修复下拉列表"添加新项"失效问题;加宽申请类型栏并调整加班时间栏宽度;新增此用户手册页面并于表格中加入链接。</td></tr>
+  </table>
+
+  </div>
+
+</div>
+</body>
+</html>
