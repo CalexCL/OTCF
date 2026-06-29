@@ -362,8 +362,15 @@ function saveList(key, list){
 function populateDropdown(selectId){
   const def = DROPDOWN_DEFS[selectId];
   const select = document.getElementById(selectId);
+  const previousValue = select.value;
   const list = loadList(def.storeKey, def.seed);
   select.innerHTML = "";
+
+  const placeholder = document.createElement("option");
+  placeholder.value = "";
+  placeholder.textContent = "-- Select --";
+  select.appendChild(placeholder);
+
   list.forEach(val=>{
     const opt = document.createElement("option");
     opt.value = val; opt.textContent = val;
@@ -373,6 +380,10 @@ function populateDropdown(selectId){
   addOpt.value = "__add_new__";
   addOpt.textContent = "+ Add new...";
   select.appendChild(addOpt);
+
+  if(previousValue && list.includes(previousValue)){
+    select.value = previousValue;
+  }
 }
 
 function setupAddableDropdown(selectId){
