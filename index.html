@@ -106,11 +106,11 @@
   tbody td.date-cell{
     color:#c97a00;
     font-weight:bold;
-    width:50px;
+    width:34px;
   }
   tbody td.day-cell{
     text-align:left;
-    width:100px;
+    width:64px;
   }
   tr.weekend td.day-cell, tr.weekend td.date-cell{
     background:var(--blue);
@@ -119,7 +119,10 @@
     background:var(--red) !important;
   }
   td.ph-cell{
-    width:50px;
+    width:32px;
+  }
+  td.claim-cell{
+    width:85px;
   }
   td.claim-cell select{
     width:100%;
@@ -135,6 +138,15 @@
     border:1px solid #ccc;
     padding:4px;
     text-align:center;
+  }
+  td.remarks-cell{
+    width:240px;
+  }
+  td.remarks-cell input{
+    width:100%;
+    padding:4px;
+    border:1px solid #ccc;
+    text-align:left;
   }
   .error-cell{
     background:var(--red-strong) !important;
@@ -300,6 +312,7 @@
         <th rowspan="2">Claim Type</th>
         <th colspan="2">OT Hrs</th>
         <th rowspan="2">Total Hrs</th>
+        <th rowspan="2">Remarks</th>
       </tr>
       <tr>
         <th>From</th>
@@ -312,6 +325,7 @@
       <tr>
         <td colspan="6">Total Hours :</td>
         <td id="grandTotal">0.0</td>
+        <td></td>
       </tr>
     </tfoot>
   </table>
@@ -517,6 +531,15 @@ function buildTable(){
     totalInput.step = "0.1";
     tdTotal.appendChild(totalInput);
     tr.appendChild(tdTotal);
+
+    // Remarks
+    const tdRemarks = document.createElement("td");
+    tdRemarks.className = "remarks-cell";
+    const remarksInput = document.createElement("input");
+    remarksInput.type = "text";
+    remarksInput.placeholder = "";
+    tdRemarks.appendChild(remarksInput);
+    tr.appendChild(tdRemarks);
 
     function recalcRow(){
       const fStr = fromInput.value, tStr = toInput.value;
