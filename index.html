@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>otcf v.2026.07.01-23:15</title>
+<title>otcf v.2026.07.03-23:15</title>
 <style>
   :root{
     --pink:#f7b8cc;
@@ -283,7 +283,7 @@
 </head>
 <body>
 <div class="sheet">
-  <div class="version">OTCF v.2026.07.01-23:15</div>
+  <div class="version">OTCF v.2026.07.03-23:15</div>
   <h1>Overtime Claim Form</h1>
 
   <div class="toolbar no-print">
@@ -364,7 +364,7 @@
   </table>
 
   <div class="no-print" style="margin-top:10px;font-size:13px;">
-    📘 <a href="OTCF_User_Manual.html" target="_blank" rel="noopener">View User Manual</a>
+    📘 <a href="https://calexcl.github.io/OTCF/OTCF_User_Manual.html" target="_blank" rel="noopener">View User Manual</a>
   </div>
 
   <div class="legend">
@@ -536,7 +536,7 @@ function buildTable(){
     const tdClaim = document.createElement("td");
     tdClaim.className = "claim-cell";
     const claimSelect = document.createElement("select");
-    ["", "Normal", "Rest Day", "Public Holiday"].forEach(opt=>{
+    ["", "Normal", "Off Day", "Rest Day", "Public Holiday"].forEach(opt=>{
       const o = document.createElement("option");
       o.value = opt; o.textContent = opt || "-- Select --";
       claimSelect.appendChild(o);
@@ -587,6 +587,13 @@ function buildTable(){
         let diff = tMin - fMin;
         if(diff < 0) diff += 24*60; // crosses midnight
         totalInput.value = (diff/60).toFixed(1);
+      }
+
+      // Auto-fill Claim Type only if still unset (-- Select --)
+      if((fStr || tStr) && claimSelect.value === "" && !phCheckbox.checked){
+        if(dow === 6)      claimSelect.value = "Off Day";
+        else if(dow === 0) claimSelect.value = "Rest Day";
+        else               claimSelect.value = "Normal";
       }
 
       // Validate overlap with working hours
@@ -649,10 +656,13 @@ buildTable();
 
 // ---------- Print / Share to PDF ----------
 function buildFileName(){
-  const name = (document.getElementById("empName").value || "OTCF").replace(/[^a-z0-9]+/gi, "_");
+  const rawName = document.getElementById("empName").value;
+  const safeName = (!rawName || rawName === "__add_new__")
+    ? "OTCF"
+    : rawName.replace(/[^a-z0-9]+/gi, "_").replace(/^_+|_+$/g, "");
   const monthName = MONTH_NAMES[parseInt(monthSelect.value,10)-1] || "";
   const year = document.getElementById("year").value || "";
-  return `OTCF_${name}_${monthName}_${year}.pdf`;
+  return `OTCF_${safeName}_${monthName}_${year}.pdf`;
 }
 
 function setStatus(msg){
